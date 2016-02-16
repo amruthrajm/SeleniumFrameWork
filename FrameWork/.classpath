@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/junit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/poi-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/poi-examples-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/poi-excelant-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/poi-ooxml-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/poi-ooxml-schemas-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/poi-scratchpad-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/saxon-8.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/SaxonLiaison.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/selenium-java-2.45.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/selenium-server-standalone-2.45.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amruth/workspace/FrameWork/JarFiles/testlink-api-client-2.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

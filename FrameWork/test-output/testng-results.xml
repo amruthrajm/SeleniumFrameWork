@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="6757" started-at="2016-02-15T06:52:16Z" finished-at="2016-02-15T06:52:22Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="6757" started-at="2016-02-15T06:52:16Z" finished-at="2016-02-15T06:52:22Z">
+      <class name="testCases.HybridExecuteTest">
+        <test-method status="PASS" signature="LaunchApp()[pri:0, instance:testCases.HybridExecuteTest@64c4e9]" name="LaunchApp" is-config="true" duration-ms="253" started-at="2016-02-15T12:22:16Z" finished-at="2016-02-15T12:22:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LaunchApp -->
+        <test-method status="PASS" signature="setData()[pri:0, instance:testCases.HybridExecuteTest@64c4e9]" name="setData" duration-ms="6494" started-at="2016-02-15T12:22:16Z" finished-at="2016-02-15T12:22:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setData -->
+      </class> <!-- testCases.HybridExecuteTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
