@@ -25,7 +25,7 @@ public class CommonLibrary {
 		WebDriver driver=new FirefoxDriver();
 		return driver;
 	}
-	
+	//finds unique number
 	public String uniqueNumber(){
 		  String tempUniqueNumber,currentDate;
 		  Date TodayDate=new Date();
