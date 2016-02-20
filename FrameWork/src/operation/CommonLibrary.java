@@ -17,6 +17,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
 
 public class CommonLibrary {
 
@@ -49,9 +50,10 @@ public class CommonLibrary {
 	  }
 	 
 	 
-	 public String takeObjectScreenShot(WebDriver driver,WebElement element)
+	 public File takeObjectScreenShot(WebDriver driver,WebElement element)
 	 	{
 		 String workingDirectory = System.getProperty("user.dir");
+		 System.setProperty("org.uncommons.reportng.escape-output", "false");
 		  String fileName = workingDirectory + File.separator + "screenshots" + File.separator  + "screenshot"+uniqueNumber()+".png";//filename
 		  File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); 
 		  try {
@@ -69,7 +71,7 @@ public class CommonLibrary {
 			  // TODO Auto-generated catch block
 			  e.printStackTrace();
 			  }
-		  return fileName;
+		  return scrFile;
 	 	}
 	 
 	public void  genarateRandomNumber()
@@ -77,6 +79,17 @@ public class CommonLibrary {
 		Random tempRan=new Random();
 		
 		System.out.println(tempRan.nextInt());
+	}
+	
+	protected void reportLogScreenshot(File file, String reportMessage) {
+	      System.setProperty("org.uncommons.reportng.escape-output", "false");  
+//	      String absolute = file.getAbsolutePath();
+//	      int beginIndex = absolute.indexOf(".");
+//	      String relative = absolute.substring(beginIndex).replace(".\\","");
+//	      String screenShot = relative.replace('\\','/');
+    Reporter.log("<a href=\"" + file  + "\">  <u>"+reportMessage+"</u> "+ "--- "+ new Date()+ "</a>" );  
+	     // Reporter.log("<a href=\"" + file + "\">"+reportMessage+"<p align=\"left\"> " + "---- "+ new Date()+ "</p>");
+//	      Reporter.log("<p><img width=\"512\" src=\"" + file.getAbsoluteFile()  + "\" alt=\"screenshot at " + new Date()+ "\"/></p></a><br />"); 
 	}
 	
 }
