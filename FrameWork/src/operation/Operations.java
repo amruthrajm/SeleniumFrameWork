@@ -6,9 +6,9 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
+import org.openqa.selenium.support.ui.Select;
 
 import com.google.common.base.Throwables;
 
@@ -17,36 +17,35 @@ public class Operations {
 	 SoftAssert softAssert=new SoftAssert();
 	 CommonLibrary commonLib=new CommonLibrary();
 	 WebDriver driver;
-	 
+
 public Operations(WebDriver driver){
 		this.driver = driver;
+		 System.setProperty("org.uncommons.reportng.escape-output", "false");
 	}
 	
 	
 	ReadObject object = new ReadObject();
-	
-	public void Click(String repositoryFileName,String objectName,String objectType) throws Exception 
+	//click the object if found else report it as Fail
+	public void Click(String repositoryFileName,String objectName,String objectType)  
 	{	
 	try{
 	
 		driver.findElement(this.getObject(repositoryFileName,objectName,objectType)).click();
 		Reporter.log("<br><B>Passed,  click done, having objectName-"+objectName+",with Type-"+objectType+"</B></br>", true);
-	
 	} 
 	catch (Exception e)
 	{
 		String stackTrace = Throwables.getStackTraceAsString(e);
 		 softAssert.assertTrue(false);
-	//	Assert.assertTrue(false, " click operation failed");
-//		File file=new File(commonFunctionsObject.takeScreenshot(driver));
-		commonLib.reportLogScreenshot(new File(commonLib.takeScreenshot(driver)),"<p>click operation Failed, object Details RepositoryName-"+repositoryFileName+", objectName-"+objectName+",with Type-"+objectType+"</p>");	
-		
-		Reporter.log("Error Details:- "+stackTrace.split("sun.reflect")[0]);//trim the unwanted error details and report it
+		 commonLib.reportLogScreenshot(new File(commonLib.takeScreenshot(driver)),"<p>click operation Failed, object Details. RepositoryName-"+repositoryFileName+", objectName-"+objectName+",with Type-"+objectType+"</p>");	
+	///report the Exception details	
+		Reporter.log("Error Details:- "+stackTrace.split("at sun.reflect")[0]);//trim the unwanted error details and report it
 	}
 		
 	}
+	
 	//performs the SetTex operation for web edit or input fields
-	public void SetText(String repositoryFileName,String objectName,String objectType,String value) throws Exception 
+	public void SetText(String repositoryFileName,String objectName,String objectType,String value) 
 	{
 		try
 		{
@@ -59,10 +58,26 @@ public Operations(WebDriver driver){
 			 softAssert.assertTrue(false);
 			// e.printStackTrace();
 			commonLib.reportLogScreenshot(new File(commonLib.takeScreenshot(driver)),"<br>Failed, Set operation failed,object not found having repository-"+repositoryFileName+", objectName-"+objectName+",with Type-"+objectType+"</br>");	
-			Reporter.log("Error Details:- "+stackTrace.split("sun.reflect")[0]);
+			Reporter.log("Error Details:- "+stackTrace.split("at sun.reflect")[0]);
+		}		
+	}
+	
+	
+	public String GetText(String repositoryFileName,String objectName,String objectType)
+	{
+		try
+		{
+		//Get text of an element
+			return	driver.findElement(this.getObject(repositoryFileName,objectName,objectType)).getText();
 		}
-		
-			
+			catch (Exception e)
+			{		 
+				String stackTrace = Throwables.getStackTraceAsString(e);
+				 softAssert.assertTrue(false);
+				 commonLib.reportLogScreenshot(new File(commonLib.takeScreenshot(driver)),"<p>GetText operation Failed, object Details. RepositoryName-"+repositoryFileName+", objectName-"+objectName+",with Type-"+objectType+"</p>");	
+				 Reporter.log("Error Details:- "+stackTrace.split("at sun.reflect")[0]);
+				 return	"";							 
+			}	
 	}
 	
 	public void GoToUrl(String repositoryFileName,String urlKeyName) throws IOException
@@ -71,12 +86,21 @@ public Operations(WebDriver driver){
 		driver.get(allObjects.getProperty(urlKeyName));
 	}
 	
-	public String GetText(String repositoryFileName,String objectName,String objectType) throws Exception
+	public void Select(String repositoryFileName,String objectName,String objectType,String value)
 	{
-		//Get text of an element
-	return	driver.findElement(this.getObject(repositoryFileName,objectName,objectType)).getText();
+		try
+		{
+			Select dropDown=new Select(driver.findElement(By.id("designation")));
+			dropDown.selectByVisibleText(value);	
+		}
+		catch (Exception e)
+		{		 
+			String stackTrace = Throwables.getStackTraceAsString(e);
+			 softAssert.assertTrue(false);
+			 commonLib.reportLogScreenshot(new File(commonLib.takeScreenshot(driver)),"<p>Select operation Failed, object Details. RepositoryName-"+repositoryFileName+", objectName-"+objectName+",with Type-"+objectType+"</p>");	
+			 Reporter.log("Error Details:- "+stackTrace.split("at sun.reflect")[0]);	 						 
+		}
 	}
-	
 	public void reportErrors()
 	{
 		softAssert.assertAll();	
